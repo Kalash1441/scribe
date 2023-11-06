@@ -1,0 +1,69 @@
+<div class="row background">
+
+    <div class="col-sm-6 background-left p-5 pb-5">
+        <h1>Don't just think! Blog It!</h1>
+      </div>
+      <div class="col-sm-6 background-right p-5 pb-5"> 
+            <div class="row">
+                       <div class="offset-sm-2 col-sm-8"> 
+
+                                  <div class="card text-blank border-0">
+                                           <div class="card-body">
+                                                <div class="card-title text-center">
+                                                     <h5>Sign Up for free</h5>
+
+                                                </div>
+                                                <div class="card-text">
+                                                    <form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm)">
+                                                        <div class="row">
+                                                        <div class="form-group col-sm-6">
+                                                            <input type="text" class="form-control" placeholder="First Name" 
+                                                            [formControl]="$any(myForm).controls['firstName']">
+                                                            
+                                                        </div><br>
+                                                        <div class="form-group col-sm-6">
+                                                            <input  type="text" class="form-control" placeholder="last Name" [formControl]="$any(myForm).controls['lastName']">
+                                                        </div>
+                                                        <div class="alert alert-danger" *ngIf="(!myForm.controls['firstName'].valid || !myForm.controls['lastName'].valid) && (myForm.controls['firstName'].touched || myForm.controls['lastName'].touched)">First and Last name are required</div>
+                                                             </div>
+                                                             <div class="form-group">
+                                                                <input type="email" class="form-control" placeholder="Enter your Email" [formControl]="$any(myForm).controls['email']">
+                                                            </div>
+
+                                                            <small class="form-text text-muted">Never share your email</small>
+                                                            <div class="alert alert-danger" *ngIf="!myForm.controls['email'].valid && myForm.controls['email'].touched">email are required</div>
+                                                             
+                                                            <div class="form-group">
+                                                                <input type="password" class="form-control" placeholder="Enter your password" [formControl]="$any(myForm).controls['password']">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <input type="password" class="form-control" placeholder="confirm password"[formControl]="$any(myForm).controls['confirmPassword']">
+                                                            </div>
+                                                            <div class="alert alert-danger" *ngIf="!myForm.controls['password'].valid && myForm.controls['password'].touched">password should 8 charaters</div>
+                                                             
+                                                            <div class="text-center">
+                                                                <button type="submit" class="btn btn-block btn-warning" [disabled]="!myForm.valid">Submit</button>
+                                                              </div>
+                                                    </form>
+                                                      
+                                                </div>
+                                           </div>  
+
+                                  
+                                        </div>
+
+                                        <div class="alert alert-success" *ngIf="message.length>0">
+                                            {{message}}
+
+                                        </div>
+
+                                        <div class="alert alert-danger" *ngIf="usererror">
+
+                                            {{ usererror.message }}
+                                        </div>
+                       </div>
+            </div>
+        </div>
+
+
+</div>
